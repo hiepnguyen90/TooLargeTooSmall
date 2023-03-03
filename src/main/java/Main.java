@@ -14,26 +14,37 @@ public class Main {
         System.out.println(secretNumber);
         int Guesses = 0;
         int userInput = 0;
+        int previous = -1;
 
-        System.out.print("Hello, what is your name? :");
+
+
+        /*System.out.print("Hello, what is your name? :");
                String name = input.next();
                 System.out.println("Welcome " + name + " Lets play a game, guess a number from 1-10, if you win, I'll give you a hug");
-
+*/
         do {
             System.out.print("Please make a guess: ");
             userInput = input.nextInt();
             Guesses++;
 
-            if (userInput > secretNumber) {
+            if(userInput == previous) {
+                Guesses--;
+                System.out.println("You guessed this number already");
+
+            }else if (userInput > secretNumber) {
                 System.out.println("Your guess is too high..  ");
                 System.out.println("Amount of guesses " + Guesses);
+                previous = userInput;
+
+
 
             }else if(userInput < secretNumber) {
                 System.out.println("Your guess is too low..  ");
                 System.out.println("Amount of guesses " + Guesses);
+                previous = userInput;
 
 
-            }else /*(userInput == secretNumber)*/ {
+            }else if (userInput == secretNumber){
                 System.out.println("CONGRATULATIONS, YOU HAVE WON!!! YOU MAY REDEEM YOUR HUG..... RIGHT NOW ");
 
                 System.out.println("You have done it in: " + Guesses);
@@ -42,8 +53,11 @@ public class Main {
             }
         } while (userInput != secretNumber);
 
+
+        }
+
     }
-}
+
         /* while (!Guess) {
 
             Scanner input = new Scanner(System.in);
